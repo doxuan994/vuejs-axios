@@ -6,6 +6,25 @@ new Vue({
     errored: false,
     posts: [],
     errors: [],
+    quoteBody: '',
+    quoteAuthor: '',
+    quoteId: '',
+    quoteLink: '',
+  },
+  methods: {
+    newQuote() {
+      axios.get('http://quotes.stormconsultancy.co.uk/random.json')
+      .then(response => {
+        // JSON responses are automatically parsed.
+        this.quoteBody = response.data.quote;
+        this.quoteAuthor = response.data.author;
+        this.quoteLink = response.data.permalink;
+        this.quoteId = response.data.id;
+      })
+      .catch(e => {
+        console.log(e);
+      })
+    }
   },
   created() {
     axios.get('http://jsonplaceholder.typicode.com/posts')
@@ -15,6 +34,20 @@ new Vue({
     })
     .catch(e => {
       this.errors.push(e);
+    })
+
+
+
+    axios.get('http://quotes.stormconsultancy.co.uk/random.json')
+    .then(response => {
+      // JSON responses are automatically parsed.
+      this.quoteBody = response.data.quote;
+      this.quoteAuthor = response.data.author;
+      this.quoteLink = response.data.permalink;
+      this.quoteId = response.data.id;
+    })
+    .catch(e => {
+      console.log(e);
     })
   },
   mounted () {

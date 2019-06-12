@@ -41,7 +41,7 @@
         <h2>Vue.js REST API Consumption with Axios</h2>
 
         <ul v-if="posts && posts.length">
-          <li v-for="post in posts">
+          <li v-for="post in posts.slice(0, 3)">
             <p><strong>{{ post.title }}</strong></p>
             <p>{{ post.body }}</p>
           </li>
@@ -52,8 +52,27 @@
             {{error.message}}
           </li>
         </ul>
-
       </div>
+
+      <div class="col-lg-8 wrapper">
+        <h2>Random Famous Quotes API Documentation</h2>
+
+        <div class="quote-box">
+          <div class="quote-text">
+            <p>{{ quoteBody }}</p>
+          </div>
+
+          <div class="quote-author">
+            <span id="quote-title-dash" v-if="quoteAuthor">—</span>
+            <span id="quote-title">{{ quoteAuthor }}</span> <br>
+            <span id="quote-source" v-if="quoteLink">Source: <a :href="quoteLink" target="_blank">{{ quoteLink }}</a></span>
+          </div>
+
+          <button type="button" @click="newQuote" class="btn btn-dark">New quote</button>
+        </div>
+      </div>
+
+
     </div>
   </div>
 
