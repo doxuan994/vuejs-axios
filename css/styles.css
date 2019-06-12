@@ -1,0 +1,14 @@
+body {
+  background: #7E8D85;
+}
+h1 {
+  font-size: 2em;
+  margin: .67em 0;
+}
+.wrapper {
+  background: #2F242C;
+  color: #fff;
+  margin-top: 20px;
+  padding: 0 40px 40px;
+  border-radius: 5px;
+}
