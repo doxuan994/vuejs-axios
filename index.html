@@ -36,6 +36,24 @@
           </div>
         </section>
       </div>
+
+      <div class="wrapper">
+        <h2>Vue.js REST API Consumption with Axios</h2>
+
+        <ul v-if="posts && posts.length">
+          <li v-for="post in posts">
+            <p><strong>{{ post.title }}</strong></p>
+            <p>{{ post.body }}</p>
+          </li>
+        </ul>
+
+        <ul v-if="errors && errors.length">
+          <li v-for="error in errors">
+            {{error.message}}
+          </li>
+        </ul>
+
+      </div>
     </div>
   </div>
 

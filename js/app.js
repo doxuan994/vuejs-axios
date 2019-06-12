@@ -4,6 +4,18 @@ new Vue({
     info: null,
     loading: true,
     errored: false,
+    posts: [],
+    errors: [],
+  },
+  created() {
+    axios.get('http://jsonplaceholder.typicode.com/posts')
+    .then(response => {
+      // JSON responses are automatically parsed.
+      this.posts = response.data;
+    })
+    .catch(e => {
+      this.errors.push(e);
+    })
   },
   mounted () {
     axios
